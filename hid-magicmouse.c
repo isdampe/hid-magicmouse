@@ -4,6 +4,7 @@
  *
  *   Copyright (c) 2010 Michael Poole <mdpoole@troilus.org>
  *   Copyright (c) 2010 Chase Douglas <chase.douglas@canonical.com>
+ *   Copyright (c) 2019 Richard Denton
  */
 
 /*
