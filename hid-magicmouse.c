@@ -4,7 +4,6 @@
  *
  *   Copyright (c) 2010 Michael Poole <mdpoole@troilus.org>
  *   Copyright (c) 2010 Chase Douglas <chase.douglas@canonical.com>
- *   Copyright (c) 2019 Richard Denton
  */
 
 /*
@@ -67,7 +66,7 @@ MODULE_PARM_DESC(report_undeciphered, "Report undeciphered multi-touch state fie
 #define TOUCH_STATE_START 0x30
 #define TOUCH_STATE_DRAG  0x40
 
-#define SCROLL_ACCEL_DEFAULT 7
+#define SCROLL_ACCEL_DEFAULT 5
 
 /* Touch surface information. Dimension is in hundredths of a mm, min and max
  * are in units. */
@@ -263,7 +262,7 @@ static void magicmouse_emit_touch(struct magicmouse_sc *msc, int raw_id, u8 *tda
 			step_x /= (64 - (int)scroll_speed) * msc->scroll_accel;
 			if (step_x != 0) {
 				msc->touches[id].scroll_x -= step_x *
-					(64 - scroll_speed) * msc->scroll_accel;
+					(64 - (scroll_speed * 3)) * msc->scroll_accel;
 				msc->scroll_jiffies = now;
 				input_report_rel(input, REL_HWHEEL, -step_x);
 			}
